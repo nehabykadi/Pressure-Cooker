@@ -18,5 +18,5 @@ Singleton pattern - will be used for keeping track of character attributes
 
 decorator pattern (don't really wanna use this) for the character's upgrades?
 
-ASSUMPTIONS:
+Assumptions:
 - 
