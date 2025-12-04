@@ -14,7 +14,7 @@ Factory pattern - will be used to build orders for different types of food
 
 Observer pattern - will be used for input, and sending messages to the grader
 
-Singleton pattern - will be used for keeping track of character attributes
+Singleton pattern - will be used for making one global instance of a player as this is not a multiplayer game
 
 decorator pattern (don't really wanna use this) for the character's upgrades?
 
