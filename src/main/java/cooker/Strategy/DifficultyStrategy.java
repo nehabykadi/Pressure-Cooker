@@ -8,7 +8,5 @@ public interface DifficultyStrategy {
     static double MEDIUM_DIFFICULTY = 0.3;
     static double HARD_DIFFICULTY = 0.6;
 
-    TipCalculator tipCalculator;
-
     void calculateUserTip(String userOrderInput, String correctOrder);
 }
