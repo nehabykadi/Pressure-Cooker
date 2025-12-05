@@ -19,6 +19,8 @@ Observer pattern - will be used for input, and sending messages to the grader
 
 Singleton pattern - will be used for making one global instance of a player as this is not a multiplayer game
 
+State pattern - maybe?? for the game itself
+
 decorator pattern (don't really wanna use this) for the character's upgrades?
 
 Assumptions:
