@@ -1,5 +1,6 @@
 package cooker;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
@@ -7,13 +8,13 @@ public class PressureCookerTest {
     private static PressureCooker pressureCooker;
     private static OrderFactory orderFactory;
 
-    @BeforeAll
-    static void setUpGame(){
+    @BeforeEach
+    void setUpGame(){
         pressureCooker = new PressureCooker(null);
     }
 
     @Test
-    public void testStartupDisplayFunctions() {
+    public void testStartupDisplayFunctions() throws InterruptedException {
         pressureCooker.displayWelcomeMessage();
         pressureCooker.displayGameRules();
     }

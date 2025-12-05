@@ -3,16 +3,25 @@ package cooker;
 public class PressureCooker {
     private PlayerProfile playerProfile;
     private OrderFactory orderFactory;
+    private TipCalculator tipCalculator;
 
 
     public PressureCooker(PlayerProfile playerProfile) {
         this.playerProfile = playerProfile;
         this.orderFactory = new OrderFactory();
+        this.tipCalculator = new TipCalculator();
     }
 
     public PressureCooker(PlayerProfile playerProfile,  OrderFactory orderFactory) {
         this.playerProfile = playerProfile;
         this.orderFactory = orderFactory;
+        this.tipCalculator = new TipCalculator();
+    }
+
+    public PressureCooker(PlayerProfile playerProfile,  OrderFactory orderFactory, TipCalculator tipCalculator) {
+        this.playerProfile = playerProfile;
+        this.orderFactory = orderFactory;
+        this.tipCalculator = tipCalculator;
     }
 
     public void displayWelcomeMessage() {
@@ -45,19 +54,19 @@ public class PressureCooker {
         System.out.println("------------------------------------------------------------------");
     }
 
-    public void displayOrder(FoodOrder order, int delayMilliseconds) {
+    public void displayOrder(FoodOrder order, int timeToShow) {
         clearScreen();
         System.out.println("----- NEW ORDER -----");
         System.out.println(order.toString());
 
-        pauseDisplay(delayMilliseconds);
+        pauseDisplay(timeToShow);
 
         clearScreen();
     }
 
-    private void pauseDisplay(int milliseconds) {
+    private void pauseDisplay(int timeToPause) {
         try {
-            Thread.sleep(milliseconds);
+            Thread.sleep(timeToPause);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
