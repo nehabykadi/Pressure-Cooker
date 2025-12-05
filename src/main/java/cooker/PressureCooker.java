@@ -20,11 +20,7 @@ public class PressureCooker {
                 "\\ \\    /| |_  | |   / /`  / / \\ | |\\/| | |_       | |  / / \\ \n" +
                 " \\_\\/\\/ |_|__ |_|__ \\_\\_, \\_\\_/ |_|  | |_|__      |_|  \\_\\_/ ");
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        pauseDisplay(2000);
 
         System.out.println(" (   (       (   (         (                 )     )     )     (     \n" +
                 " )\\ ))\\ )    )\\ ))\\ )      )\\ )        (  ( /(  ( /(  ( /(     )\\ )  \n" +
@@ -39,8 +35,36 @@ public class PressureCooker {
 
     public void displayGameRules(){
         System.out.println("In each round, you will see an order flash on screen");
+        pauseDisplay(1500);
         System.out.println("Then, you have to type it as accurately as possible");
+        pauseDisplay(1500);
         System.out.println("Your customers will tip you if they like what they get...");
+        pauseDisplay(2500);
         System.out.println("Good luck!");
+        pauseDisplay(4000);
+        System.out.println("------------------------------------------------------------------");
+    }
+
+    public void displayOrder(FoodOrder order, int delayMilliseconds) {
+        clearScreen();
+        System.out.println("----- NEW ORDER -----");
+        System.out.println(order.toString());
+
+        pauseDisplay(delayMilliseconds);
+
+        clearScreen();
+    }
+
+    private void pauseDisplay(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
