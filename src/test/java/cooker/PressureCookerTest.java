@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class PressureCookerTest {
     private static PressureCooker pressureCooker;
+    private static OrderFactory orderFactory;
 
     @BeforeAll
     static void setUpGame(){
@@ -12,8 +13,13 @@ public class PressureCookerTest {
     }
 
     @Test
-    public void testDisplayFunctions() {
+    public void testStartupDisplayFunctions() {
         pressureCooker.displayWelcomeMessage();
         pressureCooker.displayGameRules();
+    }
+
+    @Test
+    public void testdisplayOrder() {
+        pressureCooker.displayOrder(orderFactory.generateOrder(), 2500);
     }
 }
