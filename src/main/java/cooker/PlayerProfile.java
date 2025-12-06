@@ -2,7 +2,7 @@ package cooker;
 
 public class PlayerProfile {
     private static PlayerProfile instance;
-    private int money;
+    private double money;
     private int score;
 
     private PlayerProfile() {}
@@ -14,11 +14,11 @@ public class PlayerProfile {
         return instance;
     }
 
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
-    public void addMoney(int amount){
+    public void addMoney(double amount){
         this.money += amount;
     }
 

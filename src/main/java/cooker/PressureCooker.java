@@ -1,6 +1,9 @@
 package cooker;
 
+import java.util.Scanner;
+
 public class PressureCooker {
+    private Scanner scanner;
     private PlayerProfile playerProfile;
     private OrderFactory orderFactory;
     private TipCalculator tipCalculator;
@@ -10,18 +13,57 @@ public class PressureCooker {
         this.playerProfile = playerProfile;
         this.orderFactory = new OrderFactory();
         this.tipCalculator = new TipCalculator();
+        this.scanner = new Scanner(System.in);
     }
 
     public PressureCooker(PlayerProfile playerProfile,  OrderFactory orderFactory) {
         this.playerProfile = playerProfile;
         this.orderFactory = orderFactory;
         this.tipCalculator = new TipCalculator();
+        this.scanner = new Scanner(System.in);
     }
 
     public PressureCooker(PlayerProfile playerProfile,  OrderFactory orderFactory, TipCalculator tipCalculator) {
         this.playerProfile = playerProfile;
         this.orderFactory = orderFactory;
         this.tipCalculator = tipCalculator;
+        this.scanner = new Scanner(System.in);
+    }
+
+    public PressureCooker(PlayerProfile playerProfile,  OrderFactory orderFactory, TipCalculator tipCalculator, Scanner scanner) {
+        this.playerProfile = playerProfile;
+        this.orderFactory = orderFactory;
+        this.tipCalculator = tipCalculator;
+        this.scanner = scanner;
+    }
+
+    public void playGame() {
+        clearScreen();
+        displayWelcomeMessage();
+        displayGameRules();
+        boolean keepPlaying = true;
+        while (keepPlaying) {
+            FoodOrder currentOrder = OrderFactory.generateOrder();
+            displayOrder(currentOrder, 3000);
+            System.out.println("Type the order as accurately as possible: ");
+            String userInput = scanner.nextLine();
+            double tip = tipCalculator.calculateCurvedTip(userInput, currentOrder.toString());
+            playerProfile.addMoney(tip);
+
+            clearScreen();
+            System.out.println("You earned: $" + String.format("%.2f", tip));
+            System.out.println("Wallet: $" + String.format("%.2f", playerProfile.getMoney()));
+            System.out.println("-----------------------------------");
+
+            System.out.println("Another order? (y/n)");
+            String ans = scanner.nextLine();
+            if (!ans.equalsIgnoreCase("y")) {
+                keepPlaying = false;
+            }
+
+            clearScreen();
+        }
+        System.out.println("Thanks for playing Pressure Cooker! Goodbye!");
     }
 
     public void displayWelcomeMessage() {
