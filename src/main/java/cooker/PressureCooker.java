@@ -11,7 +11,6 @@ public class PressureCooker {
 
     public PressureCooker(PlayerProfile playerProfile) {
         this.playerProfile = playerProfile;
-        this.orderFactory = new OrderFactory();
         this.tipCalculator = new TipCalculator();
         this.scanner = new Scanner(System.in);
     }
